@@ -21,6 +21,8 @@ DB_DATABASE=db_simbiotik (Change with with your database)
 DB_USERNAME=root
 DB_PASSWORD=
 
+JWT_SHOW_BLACKLIST_EXCEPTION=true
+
 ```
 
 - Migrate project
@@ -38,18 +40,47 @@ php artisan serve
 ```
 localhost/api/register
 ```
+body/form-data:
+| Key   | Value  |
+|-----------|-----------|
+| name | Fill in according to your preference |
+| email | Fill in according to your preference |
+| password | Fill in according to your preference|
+| password_confirmation | Fill in according to password field |
+| nik | Fill in according to your preference |
+| phone_number | Fill in according to your preference |
+| address | Fill in according to your preference |
+| status | nasabah/admin/owner |
 - Login
 ```
 localhost/api/login
 ```
+body/form-data:
+| Key   | Value  |
+|-----------|-----------|
+| email | The email address used during registration |
+| password | The password address used during registration|
 - Logout
 ```
 localhost/api/logout
 ```
+header:
+| Key   | Value  |
+|-----------|-----------|
+| Accept | application/json |
+| Content-Type | application/json|
+| Authorization | Bearer <spasi> Token |
+
 - Get user
 ```
 localhost/api/user
 ```
+header:
+| Key   | Value  |
+|-----------|-----------|
+| Accept | application/json |
+| Content-Type | application/json|
+| Authorization | Bearer <spasi> Token |
 
 #### Fix Error (Use this if any errors)
 - if error jwt.php
