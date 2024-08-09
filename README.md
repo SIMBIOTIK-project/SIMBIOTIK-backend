@@ -12,7 +12,7 @@ git clone https://github.com/SIMBIOTIK-project/SIMBIOTIK-backend.git
 composer install
 ```
 
-- Edit .env.example to .env and edit file to this
+- Change .env.example to .env and edit file to this
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
