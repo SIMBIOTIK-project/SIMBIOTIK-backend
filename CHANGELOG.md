@@ -1,5 +1,5 @@
 <!--
- Copyright 2024 ariefsetyonugroho
+ Copyright 2024 SIMBIOTIK
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -17,3 +17,4 @@
 ### Added
 - Setting jwt token
 - Create register
+- Create login with jwt
