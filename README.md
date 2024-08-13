@@ -36,7 +36,16 @@ php artisan serve
 ```
 
 #### Route API
-- Register
+Note: For All using Bearer Token except Register, and Login
+header:
+| Key   | Value  |
+|-----------|-----------|
+| Accept | application/json |
+| Content-Type | application/json|
+| Authorization | Bearer <spasi> Token |
+
+1. Authentication
+- Register (POST)
 ```
 localhost/api/register
 ```
@@ -51,7 +60,7 @@ body/form-data:
 | phone_number | Fill in according to your preference |
 | address | Fill in according to your preference |
 | status | nasabah/admin/owner |
-- Login
+- Login (POST)
 ```
 localhost/api/login
 ```
@@ -60,27 +69,45 @@ body/form-data:
 |-----------|-----------|
 | email | The email address used during registration |
 | password | The password address used during registration|
-- Logout
+- Logout (POST)
 ```
 localhost/api/logout
 ```
-header:
-| Key   | Value  |
-|-----------|-----------|
-| Accept | application/json |
-| Content-Type | application/json|
-| Authorization | Bearer <spasi> Token |
-
-- Get user
+- Get user (GET)
 ```
 localhost/api/user
 ```
-header:
+2. Waste Types
+- Get list waste type (GET)
+```
+/wastetypes
+```
+- Get detail by id (GET)
+```
+/wastetype/{id}
+```
+- Create new waste type (POST)
+```
+/wastetypes
+```
+body/x-www-form-urlencoded:
 | Key   | Value  |
 |-----------|-----------|
-| Accept | application/json |
-| Content-Type | application/json|
-| Authorization | Bearer <spasi> Token |
+| type | Name of waste |
+| price | Value of price waste /kg |
+- Update waste type data (PUT)
+```
+/wastetypes/{id}
+```
+body/x-www-form-urlencoded:
+| Key   | Value  |
+|-----------|-----------|
+| type | Name of waste |
+| price | Value of price waste /kg |
+- Delete waste type data (DELETE)
+```
+/wastetype/{id}
+```
 
 #### Fix Error (Use this if any errors)
 - if error jwt.php

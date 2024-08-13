@@ -18,3 +18,4 @@
 - Setting jwt token
 - Create register
 - Create login with jwt
+- Create API for Waste Type
