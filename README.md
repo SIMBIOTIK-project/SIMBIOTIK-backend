@@ -37,6 +37,9 @@ php artisan serve
 
 #### Route API
 Note: For All using Bearer Token except Register, and Login
+
+base url: `localhost/api`
+
 header:
 | Key   | Value  |
 |-----------|-----------|
@@ -47,7 +50,7 @@ header:
 1. Authentication
 - Register (POST)
 ```
-localhost/api/register
+/register
 ```
 body/form-data:
 | Key   | Value  |
@@ -62,7 +65,7 @@ body/form-data:
 | status | nasabah/admin/owner |
 - Login (POST)
 ```
-localhost/api/login
+/login
 ```
 body/form-data:
 | Key   | Value  |
@@ -71,13 +74,13 @@ body/form-data:
 | password | The password address used during registration|
 - Logout (POST)
 ```
-localhost/api/logout
+/logout
 ```
 - Get user (GET)
 ```
-localhost/api/user
+/user
 ```
-2. Waste Types
+3. Waste Types
 - Get list waste type (GET)
 ```
 /wastetypes
@@ -107,6 +110,42 @@ body/x-www-form-urlencoded:
 - Delete waste type data (DELETE)
 ```
 /wastetype/{id}
+```
+
+2. Deposit
+- Get list deposits (GET)
+```
+/deposits
+```
+- Get detail by id (GET)
+```
+/deposits/{id}
+```
+- Create new deposit (POST)
+```
+/deposits
+```
+body/x-www-form-urlencoded:
+| Key   | Value  |
+|-----------|-----------|
+| id_user | ID from user |
+| id_wastetype | ID of waste type |
+| weight | Weight of waste |
+| price | Total price |
+- Update deposits data (PUT)
+```
+/deposits/{id}
+```
+body/x-www-form-urlencoded:
+| Key   | Value  |
+|-----------|-----------|
+| id_user | ID from user |
+| id_wastetype | ID of waste type |
+| weight | Weight of waste |
+| price | Total price |
+- Delete deposits data (DELETE)
+```
+/deposits/{id}
 ```
 
 #### Fix Error (Use this if any errors)

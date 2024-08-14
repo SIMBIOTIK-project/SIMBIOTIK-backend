@@ -19,3 +19,4 @@
 - Create register
 - Create login with jwt
 - Create API for Waste Type
+- Create API for Deposit

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DepositController;
 use App\Http\Controllers\Api\WastetypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,9 +47,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @method "GET"
  */
 Route::middleware('auth:api')->group(function () {
+    // Waste Type
     Route::get('/wastetypes', [WastetypeController::class, 'index'])->name('wastetypes.index');
     Route::post('/wastetypes', [WastetypeController::class, 'store'])->name('wastetypes.store');
     Route::get('/wastetypes/{id}', [WastetypeController::class, 'show'])->name('wastetypes.show');
     Route::put('/wastetypes/{id}', [WastetypeController::class, 'update'])->name('wastetypes.update');
     Route::delete('/wastetypes/{id}', [WastetypeController::class, 'destroy'])->name('wastetypes.destroy');
+
+    // Deposit
+    Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');
+    Route::post('/deposits', [DepositController::class, 'store'])->name('deposits.store');
+    Route::get('/deposits/{id}', [DepositController::class, 'show'])->name('deposits.show');
+    Route::put('/deposits/{id}', [DepositController::class, 'update'])->name('deposits.update');
+    Route::delete('/deposits/{id}', [DepositController::class, 'destroy'])->name('deposits.destroy');
 });
