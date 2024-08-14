@@ -133,7 +133,7 @@ class DepositController extends Controller
         ]);
 
         // Return response
-        return new Resource(true, 'Data Deposti Berhasil Diperbarui', $deposit);
+        return new Resource(true, 'Data Deposit Berhasil Diperbarui', $deposit);
     }
 
     /**

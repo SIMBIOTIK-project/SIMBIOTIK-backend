@@ -80,7 +80,7 @@ body/form-data:
 ```
 /user
 ```
-3. Waste Types
+2. Waste Types
 - Get list waste type (GET)
 ```
 /wastetypes
@@ -112,7 +112,7 @@ body/x-www-form-urlencoded:
 /wastetype/{id}
 ```
 
-2. Deposit
+3. Deposit
 - Get list deposits (GET)
 ```
 /deposits
@@ -146,6 +146,40 @@ body/x-www-form-urlencoded:
 - Delete deposits data (DELETE)
 ```
 /deposits/{id}
+```
+
+4. Withdrawal
+- Get list withdrawal (GET)
+```
+/withdrawals
+```
+- Get detail by id (GET)
+```
+/withdrawals/{id}
+```
+- Create new withdrawals (POST)
+```
+/withdrawals
+```
+body/x-www-form-urlencoded:
+| Key   | Value  |
+|-----------|-----------|
+| id_user | ID from user |
+| price | Total price |
+| status | Status withdrawal |
+- Update withdrawals data (PUT)
+```
+/withdrawals/{id}
+```
+body/x-www-form-urlencoded:
+| Key   | Value  |
+|-----------|-----------|
+| id_user | ID from user |
+| price | Total price |
+| status | Status withdrawal |
+- Delete withdrawals data (DELETE)
+```
+/withdrawals/{id}
 ```
 
 #### Fix Error (Use this if any errors)
