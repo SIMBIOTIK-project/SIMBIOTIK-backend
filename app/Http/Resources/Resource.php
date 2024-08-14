@@ -40,12 +40,15 @@ class Resource extends JsonResource
         // Pastikan resource adalah instance dari LengthAwarePaginator
         if ($this->resource instanceof \Illuminate\Pagination\LengthAwarePaginator) {
             return [
-                'success'      => $this->status,
-                'message'      => $this->message,
-                'current_page' => $this->resource->currentPage(),
-                'per_page'     => $this->resource->perPage(),
-                'total'        => $this->resource->total(),
-                'data'         => $this->resource->items(),
+                'success' => $this->status,
+                'message' => $this->message,
+                'result'  => [
+                    'total_data'   => $this->resource->total(),
+                    'current_page' => $this->resource->currentPage(),
+                    'per_page'     => $this->resource->perPage(),
+                    'total_pages'  => $this->resource->lastPage(),
+                    'data'         => $this->resource->items(),
+                ],
             ];
         }
 
