@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class WithDrawalController extends Controller
 {
-    /**
-     * index
-     * 
-     * @param Request $request
-     * @return void
-     */
     public function index(Request $request)
     {
         // Get the id_user from the request, if exists
@@ -29,21 +23,15 @@ class WithDrawalController extends Controller
             ->latest()
             ->paginate(10);
 
-        //return collection of withdrawals as a resource
+        // Return collection of withdrawals as a resource
         return new Resource(true, 'List Data Withdrawal', $withdrawal);
     }
 
-    /**
-     * store
-     * 
-     * @param mixed $request
-     * @return void
-     */
     public function store(Request $request)
     {
-        //Define validation rules
+        // Define validation rules
         $validator = Validator::make($request->all(), [
-            'id_user'   => 'required|exists:users,id',
+            'id_user'   => 'required|exists:users,id_user',
             'price'     => 'required|integer',
             'status'    => 'required|string',
         ]);
@@ -60,22 +48,16 @@ class WithDrawalController extends Controller
             'status'    => $request->status,
         ]);
 
-        //Return response
+        // Return response
         return new Resource(true, 'Data Withdrawal Berhasil Ditambahkan!', $withdrawal);
     }
 
-    /**
-     * show
-     * 
-     * @param mixed $id
-     * @return void
-     */
     public function show($id)
     {
-        //Find withdrawal 
-        $withdrawal = Withdrawal::with(['user'])->find($id);
+        // Find withdrawal 
+        $withdrawal = Withdrawal::with(['user'])->where('id_user', $id)->first();
 
-        //Check if withdrawal found
+        // Check if withdrawal found
         if (!$withdrawal) {
             return response()->json([
                 'success'   => false,
@@ -84,35 +66,28 @@ class WithDrawalController extends Controller
             ]);
         }
 
-        //Return single withdrawal as a resource
+        // Return single withdrawal as a resource
         return new Resource(true, 'Withdrawal untuk pengguna!', $withdrawal);
     }
 
-    /**
-     * update
-     * 
-     * @param mixed $request
-     * @param mixed $id
-     * @return void
-     */
     public function update(Request $request, $id)
     {
         // Define validation rules
         $validator = Validator::make($request->all(), [
-            'id_user'   => 'required|exists:users,id',
+            'id_user'   => 'required|exists:users,id_user',
             'price'     => 'required|integer',
             'status'    => 'required|string',
         ]);
 
-        //Check if validation fails
+        // Check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
         // Find withdrawal by id
-        $withdrawal = Withdrawal::find($id);
+        $withdrawal = Withdrawal::where('id_user', $id)->first();
 
-        //Check if withdrawal found
+        // Check if withdrawal found
         if (!$withdrawal) {
             return response()->json([
                 'success'   => false,
@@ -132,18 +107,12 @@ class WithDrawalController extends Controller
         return new Resource(true, 'Data Withdrawal Berhasil Diperbarui', $withdrawal);
     }
 
-    /**
-     * destroy
-     * 
-     * @param mixed $id
-     * @return void
-     */
     public function destroy($id)
     {
-        //Find withdrawal by id
-        $withdrawal = Withdrawal::find($id);
+        // Find withdrawal by id
+        $withdrawal = Withdrawal::where('id_user', $id)->first();
 
-        //Check if withdrawal found
+        // Check if withdrawal found
         if (!$withdrawal) {
             return response()->json([
                 'success'   => false,
@@ -152,10 +121,10 @@ class WithDrawalController extends Controller
             ], 404);
         }
 
-        //Delete withdrawal
+        // Delete withdrawal
         $withdrawal->delete();
 
-        //Return response
+        // Return response
         return new Resource(true, 'Data withdrawal berhasil dihapus', $withdrawal);
     }
 }

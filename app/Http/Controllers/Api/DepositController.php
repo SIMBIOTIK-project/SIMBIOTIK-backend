@@ -43,7 +43,7 @@ class DepositController extends Controller
     {
         // Define validation rules
         $validator = Validator::make($request->all(), [
-            'id_user'       => 'required|exists:users,id',
+            'id_user'       => 'required|exists:users,id_user',
             'id_wastetype'  => 'required|exists:wastetypes,id',
             'weight'        => 'required|numeric',
             'price'         => 'required|integer',
@@ -75,7 +75,7 @@ class DepositController extends Controller
     public function show($id)
     {
         //Find deposit by id_user with related user and wastetype
-        $deposit = Deposit::with(['user', 'wastetype'])->find($id);
+        $deposit = Deposit::with(['user', 'wastetype'])->where('id_user', $id)->first();
 
         // Check if deposit found
         if (!$deposit) {
@@ -101,7 +101,7 @@ class DepositController extends Controller
     {
         // Define validation rules
         $validator = Validator::make($request->all(), [
-            'id_user'       => 'required|exists:users,id',
+            'id_user'       => 'required|exists:users,id_user',
             'id_wastetype'  => 'required|exists:wastetype,id',
             'weight'        => 'required|numeric',
             'price'         => 'required|numeric',
@@ -113,7 +113,7 @@ class DepositController extends Controller
         }
 
         // Find deposit by id
-        $deposit = Deposit::find($id);
+        $deposit = Deposit::where('id_user', $id)->first();
 
         // Check if deposit found
         if (!$deposit) {
@@ -145,7 +145,7 @@ class DepositController extends Controller
     public function destroy($id)
     {
         // Find deposit by ID
-        $deposit = Deposit::find($id);
+        $deposit = Deposit::where('id_user', $id)->first();
 
         // Check if deposit found
         if (!$deposit) {

@@ -33,8 +33,32 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        // Tentukan prefix ID berdasarkan status
+        $prefix = '';
+        switch ($request->status) {
+            case 'nasabah':
+                $prefix = 'NAS';
+                break;
+            case 'admin':
+                $prefix = 'ADM';
+                break;
+            case 'owner':
+                $prefix = 'OWN';
+                break;
+        }
+        
+        // Ambil ID terakhir yang ada berdasarkan prefix
+        $lastUser = User::where('id', 'like', "$prefix%")->orderBy('id', 'desc')->first();
+        $lastIdNumber = $lastUser ? intval(substr($lastUser->id, 3)) : 0;
+        $newIdNumber = $lastIdNumber + 1;
+        
+        // Buat ID baru
+        $newId = $prefix . str_pad($newIdNumber, 3, '0', STR_PAD_LEFT);
+        
+
         //create user
         $user = User::create([
+            'id_user'       => $newId,
             'name'          => $request->name,
             'email'         => $request->email,
             'password'      => bcrypt($request->password),

@@ -26,7 +26,7 @@ class Deposit extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     /**
@@ -34,6 +34,6 @@ class Deposit extends Model
      */
     public function wastetype()
     {
-        return $this->belongsTo(Wastetype::class, 'id_wastetype');
+        return $this->belongsTo(Wastetype::class, 'id_wastetype', 'id');
     }
 }
