@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DepositController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WastetypeController;
 use App\Http\Controllers\Api\WithDrawalController;
 use Illuminate\Http\Request;
@@ -68,4 +69,11 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/withdrawals/{id}', [WithDrawalController::class, 'show'])->name('withdrawals.show');
     Route::put('/withdrawals/{id}', [WithDrawalController::class, 'update'])->name('withdrawals.update');
     Route::delete('/withdrawals/{id}', [WithDrawalController::class, 'destroy'])->name('withdrawals.destroy');
+
+    //User
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
