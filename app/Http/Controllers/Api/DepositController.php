@@ -148,7 +148,7 @@ class DepositController extends Controller
     public function destroy($id)
     {
         // Find deposit by ID
-        $deposit = Deposit::where('id_user', $id)->first();
+        $deposit = Deposit::where('id', $id)->first();
 
         // Check if deposit found
         if (!$deposit) {

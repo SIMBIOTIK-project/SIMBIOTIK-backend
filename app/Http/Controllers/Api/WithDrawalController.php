@@ -113,7 +113,7 @@ class WithDrawalController extends Controller
     public function destroy($id)
     {
         // Find withdrawal by id
-        $withdrawal = Withdrawal::where('id_user', $id)->first();
+        $withdrawal = Withdrawal::where('id', $id)->first();
 
         // Check if withdrawal found
         if (!$withdrawal) {
