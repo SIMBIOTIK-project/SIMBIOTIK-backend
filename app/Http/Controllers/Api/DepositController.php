@@ -54,12 +54,15 @@ class DepositController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        $userId = auth()->user()->id_user;
+
         //Create deposit
         $deposit = Deposit::create([
             'id_user'       => $request->id_user,
             'id_wastetype'  => $request->id_wastetype,
             'weight'        => $request->weight,
             'price'         => $request->price,
+            'created_by'    => $userId,
         ]);
 
         // Return response

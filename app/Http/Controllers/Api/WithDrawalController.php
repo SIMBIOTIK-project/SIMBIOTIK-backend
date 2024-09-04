@@ -41,11 +41,14 @@ class WithDrawalController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        $userId = auth()->user()->id_user;
+
         // Create withdrawal
         $withdrawal = Withdrawal::create([
-            'id_user'   => $request->id_user,
-            'price'     => $request->price,
-            'status'    => $request->status,
+            'id_user'       => $request->id_user,
+            'price'         => $request->price,
+            'status'        => $request->status,
+            'created_by'    => $userId,
         ]);
 
         // Return response

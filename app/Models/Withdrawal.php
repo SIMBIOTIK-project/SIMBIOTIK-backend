@@ -18,6 +18,7 @@ class Withdrawal extends Model
         'id_user',
         'price',
         'status',
+        'created_by',
     ];
 
     /**
@@ -26,5 +27,12 @@ class Withdrawal extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id_user');
+    }
+    /**
+     * Get the user creator
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 }

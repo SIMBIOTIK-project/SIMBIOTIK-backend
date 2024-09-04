@@ -19,6 +19,7 @@ class Deposit extends Model
         'id_wastetype',
         'weight',
         'price',
+        'created_by',
     ];
 
     /**
@@ -35,5 +36,13 @@ class Deposit extends Model
     public function wastetype()
     {
         return $this->belongsTo(Wastetype::class, 'id_wastetype', 'id');
+    }
+
+    /**
+     * Get the user creator
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 }
