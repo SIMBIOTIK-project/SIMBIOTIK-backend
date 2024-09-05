@@ -48,8 +48,8 @@ class RegisterController extends Controller
         }
         
         // Ambil ID terakhir yang ada berdasarkan prefix
-        $lastUser = User::where('id', 'like', "$prefix%")->orderBy('id', 'desc')->first();
-        $lastIdNumber = $lastUser ? intval(substr($lastUser->id, 3)) : 0;
+        $lastUser = User::where('id_user', 'like', "$prefix%")->orderBy('id_user', 'desc')->first();
+        $lastIdNumber = $lastUser ? intval(substr($lastUser->id_user, 3)) : 0;
         $newIdNumber = $lastIdNumber + 1;
         
         // Buat ID baru
