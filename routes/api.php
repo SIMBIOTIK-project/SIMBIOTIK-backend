@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\DepositController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WastetypeController;
 use App\Http\Controllers\Api\WithDrawalController;
+use App\Http\Controllers\Api\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,10 @@ Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//ResetPassword
+Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+
 
 /**
  * route
